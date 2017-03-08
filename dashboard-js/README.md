@@ -24,4 +24,24 @@ https://github.com/e-government-ua/i/wiki/%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D
 ## Run
 
     grunt serve
+    
+## Install use docker
+Create image and container
 
+    docker build -f _/Dockerfile -t igov/frontend .
+    docker run -d --name igov -v <local_folder>/i/dashboard-js:/opt/igov -p 9001:9001 -p 1337:1337 -t igov/frontend
+    
+   
+Install dependencies
+
+    docker exec -it igov npm install
+    docker exec -it igov bover install
+
+### Work with docker
+Start
+
+    docker exec -it igov grunt serve --force
+
+Connect to the container
+
+    docker exec -it igov bash
